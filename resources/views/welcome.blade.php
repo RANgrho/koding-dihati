@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel aku kamu
+                    Laravel aku kamu jancuk
                 </div>
 
                 <div class="links">
