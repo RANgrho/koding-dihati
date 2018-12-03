@@ -7,7 +7,7 @@
   <hr class="my-4">
   <p>Karena berbagi itu indah.</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Join Us</a>
+    <a class="btn btn-primary btn-lg" href="{{ route('register') }}" role="button">Join Us</a>
   </p>
 </div>
       
@@ -16,7 +16,7 @@
         <div class="col-md-9 bg-light">
             @include('post.includes.post-list')
 
-            <div class="row justify-content-center">
+{{--             <div class="row justify-content-center">
                 <ul class="pagination">
                     <li class="page-item disabled">
                     <a class="page-link" href="#">&laquo;</a>
@@ -40,7 +40,7 @@
                     <a class="page-link" href="#">&raquo;</a>
                     </li>
                 </ul>
-            </div>
+            </div> --}}
 
         </div>
 

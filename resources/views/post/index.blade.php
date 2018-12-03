@@ -7,7 +7,7 @@
   <hr class="my-4">
   <p>Karena berbagi itu indah.</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Join Us</a>
+    <a class="btn btn-primary btn-lg" href="{{ route('register') }}" role="button">Join Us</a>
   </p>
 </div>
       
