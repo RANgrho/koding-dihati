@@ -1,8 +1,8 @@
-<div>
+<div class="">
     <h3 class="card-header dark bg-light">Pertanyaan Populer</h3>
 
     @forelse ($posts as $post)
-        <a href="" style="text-decoration: none">
+        <a href="/post/{{ $post->id }}" style="text-decoration: none">
             <div class="card mb-3">                
                 <div class="card-body">
                     <h4 class="card-title">{{ $post->title }}</h4>
@@ -32,5 +32,9 @@
             </div>
         </div>  
     @endforelse ($posts as $post)  
+    
+    <div class="row justify-content-center">
+        {{ $posts->links() }}
+    </div>
     
 </div>

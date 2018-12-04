@@ -16,14 +16,15 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <link href="https://bootswatch.com/4/superhero/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/style.css')}}" rel="stylesheet" type="text/css">
     {{-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css"> --}}
     
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg-dark light">
-    <div id="app">
+<body class="bg-success light">
+    <div id="app" class="bagan">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container m-0 col-12">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -83,46 +84,45 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-0">
             @yield('content')
         </main>
-
-        <footer class="sticky-bottom bg-light footer p-5 col-12 text-dark">
-            <div class="form-inline">
-                <div class="kiri m-2 mr-auto col-3 bg-primary">
-                    kiri
-                </div>
-                <div class="tengah m-2 mr-auto col-3 bg-danger">
-                    tengah
-                </div>
-                <div class="kanan m-2 col-3 bg-warning">
-                    kanan
-                </div>
-            </div>   
-            <div class="form-inline">
-                <div class="kiri m-2 mr-auto col-3">
-                    kiri
-                </div>
-                <div class="tengah m-2 mr-auto col-3">
-                    tengah
-                </div>
-                <div class="kanan m-2 col-3">
-                    kanan
-                </div>
-            </div> 
-            <div class="form-inline">
-                <div class="kiri m-2 mr-auto col-3">
-                    kiri
-                </div>
-                <div class="tengah m-2 mr-auto col-3">
-                    tengah
-                </div>
-                <div class="kanan m-2 col-3">
-                    kanan
-                </div>
-            </div> 
-                     
-        </footer>
     </div>
+    <footer class="sticky-bottom bg-light footer p-5 col-12 text-dark">
+        <div class="form-inline">
+            <div class="kiri m-2 mr-auto col-3 bg-danger">
+                kiri
+            </div>
+            <div class="tengah m-2 mr-auto col-3 bg-success">
+                tengah
+            </div>
+            <div class="kanan m-2 col-3 bg-warning">
+                kanan
+            </div>
+        </div>   
+        <div class="form-inline">
+            <div class="kiri m-2 mr-auto col-3">
+                kiri
+            </div>
+            <div class="tengah m-2 mr-auto col-3">
+                tengah
+            </div>
+            <div class="kanan m-2 col-3">
+                kanan
+            </div>
+        </div> 
+        <div class="form-inline">
+            <div class="kiri m-2 mr-auto col-3">
+                kiri
+            </div>
+            <div class="tengah m-2 mr-auto col-3">
+                tengah
+            </div>
+            <div class="kanan m-2 col-3">
+                kanan
+            </div>
+        </div> 
+                    
+    </footer>
 </body>
 </html>
