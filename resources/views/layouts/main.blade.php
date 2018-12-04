@@ -25,7 +25,7 @@
 <body class="bg-dark light">
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
+            <div class="container m-0 col-12">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('main.name', 'Koding Dengan Hati') }}
                 </a>
@@ -35,20 +35,20 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav mr-auto ml-0">
                         
                     </ul>
 
-                    <ul class="navbar-nav mc-auto">
-                        <form class="form-inline my-2 my-lg-0">
-                          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <ul class="navbar-nav mc-auto col-8">
+                        <form class="form-inline my-2 my-lg-0 col-12" method="POST">
+                          <input class="form-control mr-sm-2 col-10" type="text" placeholder="Search">
                           <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                         </form>
                     </ul>
 
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto mr-0">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -86,6 +86,43 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer class="sticky-bottom bg-light footer p-5 col-12 text-dark">
+            <div class="form-inline">
+                <div class="kiri m-2 mr-auto col-3 bg-primary">
+                    kiri
+                </div>
+                <div class="tengah m-2 mr-auto col-3 bg-danger">
+                    tengah
+                </div>
+                <div class="kanan m-2 col-3 bg-warning">
+                    kanan
+                </div>
+            </div>   
+            <div class="form-inline">
+                <div class="kiri m-2 mr-auto col-3">
+                    kiri
+                </div>
+                <div class="tengah m-2 mr-auto col-3">
+                    tengah
+                </div>
+                <div class="kanan m-2 col-3">
+                    kanan
+                </div>
+            </div> 
+            <div class="form-inline">
+                <div class="kiri m-2 mr-auto col-3">
+                    kiri
+                </div>
+                <div class="tengah m-2 mr-auto col-3">
+                    tengah
+                </div>
+                <div class="kanan m-2 col-3">
+                    kanan
+                </div>
+            </div> 
+                     
+        </footer>
     </div>
 </body>
 </html>

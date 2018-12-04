@@ -34,7 +34,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        if (Auth::user()) {
+        if (Auth::check()) {
             return view('post.create');
         }else{
             return view('auth.login');

@@ -7,7 +7,11 @@
   <hr class="my-4">
   <p>Karena berbagi itu indah.</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="{{ route('register') }}" role="button">Join Us</a>
+      @if (Auth::check())
+        <h2 class="text-primary">{{ "Selamat Datang ". Auth::user()->name }}</h2>
+      @else
+        <a class="btn btn-primary btn-lg" href="{{ route('register') }}">Join Us</a>
+      @endif    
   </p>
 </div>
       

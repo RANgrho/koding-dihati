@@ -15,6 +15,10 @@ Route::get('/', function () {
     return redirect('/post');
 });
 
+Route::get('register', function () {
+    return redirect('/auth/register');
+});
+
 Auth::routes();
 
 /* Route::get('/home', 'HomeController@index')->name('home'); */

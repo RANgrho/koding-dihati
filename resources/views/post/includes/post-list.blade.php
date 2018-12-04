@@ -21,7 +21,7 @@
                     <span class="badge badge-pill badge-light">Light</span>
                     <span class="badge badge-pill badge-dark">Dark</span>    
 
-                    <div class="text-right">{{ $post->created_at }}</div>
+                    <div class="text-right">{{ $post->created_at->diffForHumans() }}</div>
                 </div>
             </div>
         </a>
