@@ -1,8 +1,12 @@
 @extends('layouts.main')
 
+@section('css')
+    <link href="{{ asset('css/style.css')}}" rel="stylesheet" type="text/css">
+@endsection
+
 @section('content')
 <div class="bg-warning col-12 m-0">
-    <div class="container jumbotron bg-warning">
+    <div class="container jumbotron" style="background: none;">
         <h1 class="display-3">KODING DENGAN HATI</h1>
         <p class="lead">Web Forum untuk berbagi, sharing, diskusi seputar Pemrograman Web</p>
         <hr class="my-4">

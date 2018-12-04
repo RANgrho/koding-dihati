@@ -21,11 +21,11 @@ class PostController extends Controller
         return view ('post.index', ['posts' => $posts]);
     }
 
-    public function welcome()
+    /* public function welcome()
     {
         $posts = Post::all();
         return view ('welcome', ['posts' => $posts]);
-    }
+    } */
 
     /**
      * Show the form for creating a new resource.
@@ -74,7 +74,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return view('post.show');
+        $data = Post::FindOrFail($id);
+        return view('post.show', compact('data'));
     }
 
     /**
