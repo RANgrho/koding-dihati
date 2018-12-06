@@ -12,6 +12,14 @@
         <hr class="my-4">
         <p>Karena berbagi itu indah.</p>
         <p class="lead">
+            
+            {{-- 
+            ==================================================================================================================
+            Mengecek status login
+            Apabila sudah login akan menampilkan tulisan "selamat datang $nama_user"
+            Dan bila belum login akan menampilkan tombol "Join Us" yang berguna mengalihkan ke halaman register bila di klik
+            ==================================================================================================================
+             --}}
             @if (Auth::check())
                 <h2 class="text-success">{{ "Selamat Datang ". Auth::user()->name }}</h2>
             @else

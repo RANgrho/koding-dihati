@@ -5,6 +5,12 @@
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-9 bg-light">
+
+            <!--
+                ===================
+                Form Create Post
+                ===================
+            -->
             <form action="{{ route('post.store')}}" method="POST" role="form">
                 {{ csrf_field() }}
                 <fieldset>
@@ -44,6 +50,7 @@
                     </fieldset>   
                 </fieldset>
             </form>
+            
         </div>
     </div>
 </div>

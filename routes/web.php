@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect('/post');
+    return redirect('post');
 });
 
 Route::get('register', function () {
@@ -24,4 +24,7 @@ Auth::routes();
 /* Route::get('/home', 'HomeController@index')->name('home'); */
 /* Route::get('/post/create', 'PostController@create')->name('post.create'); */
 
+// ======================================
+// Memanggil semua route secara otomatis
+// ======================================
 Route::resource('post', 'PostController'); 

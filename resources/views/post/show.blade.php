@@ -22,6 +22,13 @@
         <div class="col-md-9 bg-light">
           <div class="card text-white bg-secondary m-3" style="max-width: 50rem;">
             <div class="card-header">
+              {{-- 
+              ======================================================================
+              Memanggil data dari tabel "posts" yang ada di database
+              Dan mengubah format created_at menjadi waktu yang bisa dibaca manusia
+              Seperti 1 second ago, 2 days ago, 3 hours ago
+              =======================================================================
+               --}}
               <a href="#"><h3>{{ $data->author }}</h3></a>
               <p>{{ $data->created_at->diffForHumans() }}</p>
             </div>

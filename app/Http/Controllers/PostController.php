@@ -17,6 +17,11 @@ class PostController extends Controller
 
     public function index()
     {
+        // =============================================================
+        // Method untuk memanggil atau mengambil data dari database
+        // Sekaligus membuat PAGINATION secara otomatis
+        // Dan mengembalikan view ke post.index (/post/index.blade.php)
+        // ==============================================================
         $posts = Post::paginate(5);
         return view ('post.index', ['posts' => $posts]);
     }
@@ -34,6 +39,12 @@ class PostController extends Controller
      */
     public function create()
     {
+        // =============================================================================================
+        // Method mengecek user ketika menekan tombol"buat postingan" sudah melakukan login atau belum
+        // jika sudah akan dialihkan ke halaman post.create (/post/create.blade.php)
+        // dan jika belum akan dialihkan ke halaman login
+        // =============================================================================================
+
         if (Auth::check()) {
             return view('post.create');
         }else{
@@ -50,11 +61,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // ===============================================
+        // validasi data yang akan dikirimkan ke database
+        // ===============================================
+
         $this->validate($request, array(
             'title' => 'required|max:200',
             'context' => 'required',
             'author' => 'required'
         ));
+
+        // =========================================
+        // validasi data ke dalam sebuah variabel
+        // agar mudah dalam pemanggilannya
+        // dan setelah dikirim akan akan langsung pindah ke halaman /post
+        // =========================================
 
         $posts = new Post();
         $posts->title = $request->title;
@@ -74,6 +95,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        // ===================================================
+        // Menampilkan data berdasarkan data $id yang dipilih
+        // dan data $id akan dikirimkan ke halaman post.show (/post/show.blade.php)
+        // ===================================================
+
         $data = Post::FindOrFail($id);
         return view('post.show', compact('data'));
     }
