@@ -22,8 +22,8 @@ class PostController extends Controller
         // Sekaligus membuat PAGINATION secara otomatis
         // Dan mengembalikan view ke post.index (/post/index.blade.php)
         // ==============================================================
-        $posts = Post::paginate(5);
-        return view ('post.index', ['posts' => $posts]);
+        $posts = Post::latest()->paginate(5);
+        return view ('post.index', /* ['posts' => $posts] */ \compact('posts'));
     }
 
     /* public function welcome()
@@ -93,14 +93,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
         // ===================================================
         // Menampilkan data berdasarkan data $id yang dipilih
         // dan data $id akan dikirimkan ke halaman post.show (/post/show.blade.php)
         // ===================================================
 
-        $data = Post::FindOrFail($id);
+        $data = Post::FindOrFail($post->id);
         return view('post.show', compact('data'));
     }
 
@@ -110,9 +110,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -122,9 +122,24 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:200',
+            'context' => 'required',
+            'author' => 'required'
+        ]);
+
+        $post->update($request->all());
+        return redirect()->route('post.index');
+/* 
+        $posts = Post::FindOrFail($id);
+        $posts->title = $request->get('title');
+        $posts->context = $request->get('context');
+        $posts->author = $request->get('author');
+        $posts->save();
+
+        return redirect('/post'); */
     }
 
     /**
@@ -133,8 +148,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('post.index');
     }
 }

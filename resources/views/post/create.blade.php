@@ -28,23 +28,17 @@
                         <label for="context">Deskripsi</label>
                         <textarea class="form-control" name="context" id="context" rows="10"></textarea>
                     </div>
-
                     <div class="form-group">
-                        <label for="">Max 3 Tags</label>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
-                            <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
-                        </div>
+                        <label for="tags">Tag Max 3</label>
+                        <br>
+                        <select class="custom-select border-0 m-0">
+                            <option selected=""></option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
                     </div>
-                    {{-- @php
-                        $author = Auth::user()->name;
-                    @endphp --}}
-                    
-                    {{-- <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                        <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-                    </div> --}}
+
                     <fieldset class="form-group">                    
                         <button type="submit" class="btn btn-primary">Kirim</button>
                     </fieldset>   
