@@ -15,7 +15,15 @@
                                 <i class="material-icons float-right">create</i>
                             </a>
                         </form>
-                    </div>        
+                    </div>                                  
+                @elseif(Auth::user()->isAdmin === 1)
+                    <div class="float-left col-12 pr-2 pt-2">
+                        <form action="{{ route('post.destroy', $post->id) }}" method="POST" class="mr-0 text-danger">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger mr-0 float-right"><i class="material-icons float-right">delete</i></button>
+                        </form>
+                    </div> 
                 @endif
             
             @endif  
@@ -33,7 +41,7 @@
                 </div>     
             </a>         
             <div class="card-footer text-muted">  
-                <span class="badge badge-pill badge-primary">Primary</span>
+                <span class="badge badge-pill badge-primary">{{ $post->tag }}</span>
                 <span class="badge badge-pill badge-secondary">Secondary</span>
                 <span class="badge badge-pill badge-success">Success</span>
                 <span class="badge badge-pill badge-danger">Danger</span>

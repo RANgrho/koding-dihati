@@ -28,3 +28,4 @@ Auth::routes();
 // Memanggil semua route secara otomatis
 // ======================================
 Route::resource('post', 'PostController'); 
+Route::resource('tag', 'TagController'); 

@@ -9,6 +9,6 @@ class Post extends Model
     /* protected $table = 'posts'; */
 
     protected $fillable = [
-        'title', 'context'
+        'title', 'context', 'tag',
     ];
 }

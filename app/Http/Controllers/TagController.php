@@ -14,7 +14,10 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::all();
+        //return view('tag.test', compact('tags'));
+        //return dd($tags);
+        return view('post.create', compact('tags'));
     }
 
     /**
@@ -24,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('tag.create');
     }
 
     /**
@@ -35,7 +38,15 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, array(
+            'tag' => 'required|max:20'
+        ));
+
+        $tags = new Tag();
+        $tags->tag = $request->tag;
+        $tags->save();
+
+        return \redirect('/tag/create')->with('success', 'Tag Berhasil ditambahkan');
     }
 
     /**

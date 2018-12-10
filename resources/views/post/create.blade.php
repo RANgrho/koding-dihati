@@ -1,7 +1,13 @@
 @extends('layouts.main')
 
 @section('content')
-      
+
+@if ($message = Session::get('success'))
+    <div class="alert alert-success">
+        <p class="text-center">{{ $message }}</p>
+    </div>
+@endif
+
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-9 bg-light">
@@ -29,13 +35,15 @@
                         <textarea class="form-control" name="context" id="context" rows="10"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="tags">Tag Max 3</label>
+                        <label for="tags">Tag</label>
                         <br>
-                        <select class="custom-select border-0 m-0">
-                            <option selected=""></option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select class="custom-select m-0">
+                            <option selected=""></option>                        
+                            @forelse ($tags as $tag)
+                                <option name="tag" id="tag" value="{{ $tag->tag }}">{{ $tag->tag }}</option>
+                            @empty
+                                <option value="">tidak ada tag</option>
+                            @endforelse ($tags as $tag)
                         </select>
                     </div>
 

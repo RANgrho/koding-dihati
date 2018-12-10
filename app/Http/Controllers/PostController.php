@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class PostController extends Controller
         // Dan mengembalikan view ke post.index (/post/index.blade.php)
         // ==============================================================
         $posts = Post::latest()->paginate(5);
-        return view ('post.index', /* ['posts' => $posts] */ \compact('posts'));
+        return view ('post.index', compact('posts'));
     }
 
     /* public function welcome()
@@ -44,9 +45,10 @@ class PostController extends Controller
         // jika sudah akan dialihkan ke halaman post.create (/post/create.blade.php)
         // dan jika belum akan dialihkan ke halaman login
         // =============================================================================================
+        $tags = Tag::all();
 
         if (Auth::check()) {
-            return view('post.create');
+            return view('post.create', compact('tags'));
         }else{
             return view('auth.login');
         }
@@ -68,7 +70,8 @@ class PostController extends Controller
         $this->validate($request, array(
             'title' => 'required|max:200',
             'context' => 'required',
-            'author' => 'required'
+            'author' => 'required',
+            'tag' => 'required',
         ));
 
         // =========================================
@@ -81,10 +84,11 @@ class PostController extends Controller
         $posts->title = $request->title;
         $posts->context = $request->context;
         $posts->author = $request->author;
+        $posts->tag = $request->tag;
 
         $posts->save();
 
-        return redirect('/post');
+        return redirect('/post')->with('success', 'Post behasil ditambahkan');
     }
 
     /**
@@ -127,7 +131,8 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|max:200',
             'context' => 'required',
-            'author' => 'required'
+            'author' => 'required',
+            'tag' => 'required',
         ]);
 
         $post->update($request->all());

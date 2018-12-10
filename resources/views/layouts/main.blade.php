@@ -45,7 +45,7 @@
                     <ul class="navbar-nav mc-auto col-8">
                         <form class="form-inline my-2 my-lg-0 col-12" method="POST">
                           <input class="form-control mr-sm-2 col-10" type="text" placeholder="Search">
-                          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                          <i class="material-icons md-48 btn btn-secondary my-2 my-sm-0">search</i>
                         </form>
                     </ul>
 
