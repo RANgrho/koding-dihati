@@ -69,9 +69,9 @@ class PostController extends Controller
 
         $this->validate($request, array(
             'title' => 'required|max:200',
-            'context' => 'required',
-            'author' => 'required',
             'tag' => 'required',
+            'context' => 'required',
+            'author' => 'required',            
         ));
 
         // =========================================
@@ -82,12 +82,12 @@ class PostController extends Controller
 
         $posts = new Post();
         $posts->title = $request->title;
+        $posts->tag = $request->tag;
         $posts->context = $request->context;
         $posts->author = $request->author;
-        $posts->tag = $request->tag;
-
+        
         $posts->save();
-
+        
         return redirect('/post')->with('success', 'Post behasil ditambahkan');
     }
 

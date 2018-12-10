@@ -8,6 +8,17 @@
     </div>
 @endif
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-9 bg-light">
@@ -18,7 +29,7 @@
                 ===================
             -->
             <form action="{{ route('post.store')}}" method="POST" role="form">
-                {{ csrf_field() }}
+                @csrf
                 <fieldset>
                     <legend>Buat Post</legend>
                     <div class="form-group">
@@ -37,12 +48,12 @@
                     <div class="form-group">
                         <label for="tags">Tag</label>
                         <br>
-                        <select class="custom-select m-0">
+                        <select class="custom-select m-0" name="tag" id="tag">
                             <option selected=""></option>                        
                             @forelse ($tags as $tag)
                                 <option name="tag" id="tag" value="{{ $tag->tag }}">{{ $tag->tag }}</option>
                             @empty
-                                <option value="">tidak ada tag</option>
+                                
                             @endforelse ($tags as $tag)
                         </select>
                     </div>

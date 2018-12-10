@@ -17,7 +17,7 @@ class TagController extends Controller
         $tags = Tag::all();
         //return view('tag.test', compact('tags'));
         //return dd($tags);
-        return view('post.create', compact('tags'));
+        //return view('ate', compact('tags'));
     }
 
     /**

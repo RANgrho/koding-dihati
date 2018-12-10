@@ -41,14 +41,21 @@
                 </div>     
             </a>         
             <div class="card-footer text-muted">  
-                <span class="badge badge-pill badge-primary">{{ $post->tag }}</span>
-                <span class="badge badge-pill badge-secondary">Secondary</span>
-                <span class="badge badge-pill badge-success">Success</span>
-                <span class="badge badge-pill badge-danger">Danger</span>
-                <span class="badge badge-pill badge-warning">Warning</span>
-                <span class="badge badge-pill badge-info">Info</span>
-                <span class="badge badge-pill badge-light">Light</span>
-                <span class="badge badge-pill badge-dark">Dark</span>    
+                @if ($post->tag === 'Laravel')
+                    <span class="badge badge-pill badge-danger">{{ $post->tag }}</span>    
+                @elseif($post->tag === 'Python')
+                    <span class="badge badge-pill badge-primary">{{ $post->tag }}</span>
+                @elseif($post->tag === 'Ruby')
+                    <span class="badge badge-pill badge-warning">{{ $post->tag }}</span>
+                @elseif($post->tag === 'CSS')
+                    <span class="badge badge-pill badge-secondary">{{ $post->tag }}</span>
+                @elseif($post->tag === 'HTML')
+                    <span class="badge badge-pill badge-light">{{ $post->tag }}</span>
+                @elseif($post->tag === 'PHP')
+                    <span class="badge badge-pill badge-dark">{{ $post->tag }}</span>
+                @elseif($post->tag === 'JavaScript')
+                    <span class="badge badge-pill badge-success">{{ $post->tag }}</span>
+                @endif
 
                 <div class="text-right">{{ $post->created_at->diffForHumans() }}</div>
             </div>            
