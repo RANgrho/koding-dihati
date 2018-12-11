@@ -18,6 +18,10 @@
     opacity: 0.4;
 }
 
+.headerku{
+    background-image: url(../img/header.png);
+}
+
 /* .jumbotron{
     background: #fc0909;
 } */

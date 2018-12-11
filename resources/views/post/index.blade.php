@@ -5,11 +5,11 @@
 @endsection
 
 @section('content')
-<div class="bg-warning col-12 m-0">
+<div class="headerku bg-secondary text-white col-12 m-0">
     <div class="container jumbotron" style="background: none;">
         <h1 class="display-3">KODING DENGAN HATI</h1>
         <p class="lead">Web Forum untuk berbagi, sharing, diskusi seputar Pemrograman Web</p>
-        <hr class="my-4">
+        <hr class="my-4 bg-white">
         <p>Karena berbagi itu indah.</p>
         <p class="lead">
             

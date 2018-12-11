@@ -1,5 +1,5 @@
 <div class="">
-    <h3 class="card-header dark bg-light">Pertanyaan Populer</h3>
+    <h3 class="card-header dark bg-light">Artikel terbaru</h3>
 
     @forelse ($posts as $post)
         <div class="card mb-3"> 
@@ -28,9 +28,9 @@
             
             @endif  
             
-            <a href="/post/{{ $post->id }}" style="text-decoration: none;" class="text-dark">         
+            <a href="/post/{{ $post->id }}" style="" class="text-dark" style="">         
                 <div class="card-body">
-                    <h4 class="card-title">{{ $post->title }}</h4>
+                    <h3 class="card-title">{{ $post->title }}</h3></a>  
                     <h6 class="card-subtitle text-muted">by : {{ $post->author }}</h6>
                     <i class="material-icons text-success" style="font-size: 20px;">visibility</i>
                     <br>
@@ -39,7 +39,7 @@
                 <div class="card-body">
                     <p class="card-text">{{ $post->context }}.</p>
                 </div>     
-            </a>         
+                   
             <div class="card-footer text-muted">  
                 @if ($post->tag === 'Laravel')
                     <span class="badge badge-pill badge-danger">{{ $post->tag }}</span>    
@@ -53,7 +53,7 @@
                     <span class="badge badge-pill badge-light">{{ $post->tag }}</span>
                 @elseif($post->tag === 'PHP')
                     <span class="badge badge-pill badge-dark">{{ $post->tag }}</span>
-                @elseif($post->tag === 'JavaScript')
+                @elseif($post->tag === 'Javascript')
                     <span class="badge badge-pill badge-success">{{ $post->tag }}</span>
                 @endif
 

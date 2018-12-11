@@ -25,7 +25,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg-success light">
+<body class="bg-light light">
     <div id="app" class="bagan">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container m-0 col-12">
@@ -90,7 +90,7 @@
             @yield('content')
         </main>
     </div>
-    <footer class="sticky-bottom bg-light footer p-5 col-12 text-dark">
+    <!-- <footer class="sticky-bottom bg-light footer p-5 col-12 text-dark">
         <div class="form-inline">
             <div class="kiri m-2 mr-auto col-3 bg-danger">
                 kiri
@@ -125,6 +125,6 @@
             </div>
         </div> 
                     
-    </footer>
+    </footer> -->
 </body>
 </html>

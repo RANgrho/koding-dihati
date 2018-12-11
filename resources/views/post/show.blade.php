@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container col-12 bg-warning">
+ <!-- <div class="container col-12 bg-warning">
   <div class="backg">
     <h1 class="display-3">KODING DENGAN Komputer</h1>
     <p class="lead">Web Forum untuk berbagi, sharing, diskusi seputar Pemrograman Web</p>
@@ -14,13 +14,13 @@
     <p class="lead">
       <a class="btn btn-primary btn-lg" href="{{ route('register') }}">Join Us</a>
     </p>
-</div>
-</div>
+  </div>
+</div>  -->
       
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-9 bg-light">
-          <div class="card text-white bg-secondary m-3" style="max-width: 50rem;">
+          <div class="card text-black bg-light m-3" style="max-width: 50rem;">
             <div class="card-header">
               {{-- 
               ======================================================================
@@ -29,27 +29,34 @@
               Seperti 1 second ago, 2 days ago, 3 hours ago
               =======================================================================
                --}}
-              <a href="#"><h3>{{ $data->author }}</h3></a>
-              <p>{{ $data->created_at->diffForHumans() }}</p>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">{{ $data->title }}</h4>
-              
-              <span class="badge badge-pill badge-primary">Primary</span>
-              <span class="badge badge-pill badge-secondary">Secondary</span>
-              <span class="badge badge-pill badge-success">Success</span>
-              <span class="badge badge-pill badge-danger">Danger</span>
-              <span class="badge badge-pill badge-warning">Warning</span>
-              <span class="badge badge-pill badge-info">Info</span>
-              <span class="badge badge-pill badge-light">Light</span>
-              <span class="badge badge-pill badge-dark">Dark</span>  
+              <h3 class="card-title">{{ $data->title }}</h3>
+              @if ($data->tag === 'Laravel')
+                    <span class="badge badge-pill badge-danger">{{ $data->tag }}</span>    
+                @elseif($data->tag === 'Python')
+                    <span class="badge badge-pill badge-primary">{{ $data->tag }}</span>
+                @elseif($data->tag === 'Ruby')
+                    <span class="badge badge-pill badge-warning">{{ $data->tag }}</span>
+                @elseif($data->tag === 'CSS')
+                    <span class="badge badge-pill badge-secondary">{{ $data->tag }}</span>
+                @elseif($data->tag === 'HTML')
+                    <span class="badge badge-pill badge-light">{{ $data->tag }}</span>
+                @elseif($data->tag === 'PHP')
+                    <span class="badge badge-pill badge-dark">{{ $data->tag }}</span>
+                @elseif($data->tag === 'Javascript')
+                    <span class="badge badge-pill badge-success">{{ $data->tag }}</span>
+                @endif
+              </div>
+              <div class="card-body">
+              by {{ $data->author }}  
+              <br>
+              {{ $data->created_at->diffForHumans() }}
                             
               <p class="card-text"><hr>{{ $data->context }}.</p>
             </div>
           </div>
         </div>
 
-        @include('post.includes.tags')
+        
     </div>
 </div>
 @endsection
