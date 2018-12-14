@@ -45,7 +45,7 @@ class CommentController extends Controller
         ));
 
         
-        $post = Post::FindOrFail($post_id);
+        $post = Post::FindOrFail($request->post_id);
         $comment = new Comment();
         $comment->post_id = $request->post_id;
         $comment->comment = $request->comment;
