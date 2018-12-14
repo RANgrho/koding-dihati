@@ -97,19 +97,24 @@
         </div>        
 
         <div class="col-md-9 bg-light">
-            <div class="card text-black bg-white m-3" style="max-width: 50rem;">
-                {{-- 
-                ======================================================================
-                Memanggil data dari tabel "comment"
-                =======================================================================
-                    --}}
-                <div class="card-body">
-                by {{ $data->author }}  
-                <p style="font-size: 10px">{{ $data->created_at->diffForHumans() }}</p>
-                <hr>
-                <p class="card-text">hasil jawaban.</p>
-                </div>
-            </div>
+        {{-- 
+            ======================================================================
+            Memanggil data dari tabel "comment"
+            =======================================================================
+                --}}
+            @forelse ($data->comment as $comment)
+                <div class="card text-black bg-white m-3" style="max-width: 50rem;">                
+                    <div class="card-body">
+                        by {{ $comment->user->name }}  
+                        <p style="font-size: 10px">{{ $comment->created_at->diffForHumans() }}</p>
+                        <hr>
+                        <p class="card-text">{{ $comment->comment }}.</p>
+                    </div>
+                </div>    
+            @empty
+                
+            @endforelse
+            
         </div>        
         
         @if (Auth::check())
@@ -119,8 +124,9 @@
                     Form Input Komentar
                     =======================================================================
                         --}}
-                <form action="{{ route('comment.store')}}" method="POST" class="form-group m-3">
-                    <input type="hidden" class="form-control" name="id" id="id" value="{{ Auth::user()->id }}">
+                <form action="{{ route('comment.store') }}" method="POST" class="form-group m-3">
+                    @csrf
+                    <input type="hidden" class="form-control" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
                     <input type="hidden" class="form-control" name="post_id" id="post_id" value="{{ $data->id }}">
                     <textarea class="form-control" rows="5" name="comment" id="comment" placeholder="Tulis Jawaban Anda Disini ..."></textarea>
                     <button class="btn btn-secondary btn-block mt-2">submit jawaban</button>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
+use App\User;
 
 class CommentController extends Controller
 {
@@ -14,8 +16,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comment = new Comment();
-        return redirect('post.show', compact('comments'));
+        $comments = Comment::all();
+        return view('/post', compact('comments'));
     }
 
     /**
@@ -34,22 +36,25 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Comment $comment)
     {
         $this->validate($request, array(
             'post_id' => 'required',
             'comment' => 'required',
-            'name' => 'required',
+            'user_id' => 'required',
         ));
 
+        
+        $post = Post::FindOrFail($post_id);
         $comment = new Comment();
         $comment->post_id = $request->post_id;
         $comment->comment = $request->comment;
-        $comment->name = $request->name;
+        $comment->user_id = $request->user_id;
+        $comment->post()->associate($post);
         
         $comment->save();
-        return 'success';
-        //return redirect()->route('post.show')->with('success', 'Jawaban berhasil ditambahkan');
+        //return 'success';
+        return redirect()->route('post.show', $comment->post_id)->with('success', 'Jawaban berhasil ditambahkan');
     }
 
     /**
@@ -58,9 +63,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Comment $comment)
     {
-        //
+        $comments = Comment::all();
     }
 
     /**
@@ -69,7 +74,7 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -81,7 +86,7 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -92,7 +97,7 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
         //
     }

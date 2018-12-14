@@ -8,6 +8,7 @@ use App\Comment;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+//use Illuminate\Database\Eloquent\Relations\HasMany;;
 
 
 class PostController extends Controller
@@ -101,16 +102,19 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Post $post, Comment $comment)
     {
         // ===================================================
         // Menampilkan data berdasarkan data $id yang dipilih
         // dan data $id akan dikirimkan ke halaman post.show (/post/show.blade.php)
         // ===================================================
-
+        //$comment = Comment::all();
+        //$user = User::all();
         $data = Post::FindOrFail($post->id);
+        //$data_comments = Comment::FindOrFail($post->id);
+        //$data_user = User::FindOrFail($comment->id);
                 
-        return view('post.show', compact('data'));
+        return view('post.show', compact('data'/* , 'data_comments', 'data_user' */));
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Post;
+use App\Comment;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -36,5 +37,10 @@ class User extends Authenticatable
         relasi one to many => user to post
         ======== */
         return $this->hasMany(Post::class);
+    }
+
+    public function comment()
+    {
+        return $this->hasmany(Comment::class);
     }
 }
