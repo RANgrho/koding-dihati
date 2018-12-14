@@ -18,16 +18,28 @@ class Post extends Model
 
     public function comment()
     {
+        /* 
+        ========
+        relasi one to many => post to comment
+        ======== */
         return $this->hasMany(Comment::class);
     }
 
     public function user()
     {
+        /* 
+        ========
+        relasi one to many invers => post to user
+        ======== */
         return $this->belongsTo(User::class);
     }
 
     public function tag()
     {
+        /* 
+        ========
+        relasi one to many invers => post to tag
+        ======== */
         return $this->belongsTo(Tag::class);
     }
 }

@@ -13,6 +13,10 @@ class Tag extends Model
 
     public function post()
     {
+        /* 
+        ========
+        relasi one to many => tag to post
+        ======== */
         return $this->hasMany(Post::class);
     }
 }

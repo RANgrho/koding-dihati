@@ -12,6 +12,10 @@ class Comment extends Model
 
     public function post()
     {
+        /* 
+        ========
+        relasi one to many invers => comment to post
+        ======== */
         return $this->belongsTo(Post::class);
     }
 }
