@@ -27,7 +27,8 @@ class PostController extends Controller
         // Dan mengembalikan view ke post.index (/post/index.blade.php)
         // ==============================================================
         $posts = Post::latest()->paginate(5);
-        return view ('post.index', compact('posts'));
+        $tags = Tag::all();
+        return view ('post.index', compact('posts', 'tags'));
     }
 
     /* public function welcome()
@@ -108,6 +109,7 @@ class PostController extends Controller
         // Menampilkan data berdasarkan data $id yang dipilih
         // dan data $id akan dikirimkan ke halaman post.show (/post/show.blade.php)
         // ===================================================
+
         //$comment = Comment::all();
         //$user = User::all();
         $data = Post::FindOrFail($post->id);

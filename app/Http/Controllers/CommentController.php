@@ -75,8 +75,8 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Comment $comment)
-    {
-        //
+    {        
+        return view('comment.edit', compact('comment'));
     }
 
     /**
@@ -88,7 +88,14 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        $request->validate([
+            'post_id' => 'required',
+            'comment' => 'required',
+            'user_id' => 'required',
+        ]);
+
+        $comment->update($request->all());
+        return redirect()->route('post.show', $comment->post_id);
     }
 
     /**
@@ -99,6 +106,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+
+        return redirect()->route('post.show', $comment->post_id);
     }
 }

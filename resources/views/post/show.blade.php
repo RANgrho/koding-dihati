@@ -102,8 +102,33 @@
             Memanggil data dari tabel "comment"
             =======================================================================
                 --}}
-            @forelse ($data->comment as $comment)
-                <div class="card text-black bg-white m-3" style="max-width: 50rem;">                
+            @forelse ($data->comment as $comment)               
+                <div class="card text-black bg-white m-3" style="max-width: 50rem;"> 
+                    
+                    @if (Auth::check())
+                        @if (Auth::user()->id === $comment->user_id)
+                            <div class="float-left col-12 pr-2 pt-2">
+                                <form action="{{ route('comment.destroy', $comment->id) }}" method="POST" class="mr-0 text-danger">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger mr-0 float-right"><i class="material-icons float-right">delete</i></button>
+                                
+                                    <a href="{{ route('comment.edit', $comment->id) }}" class="mr-2 text-light btn btn-primary float-right">
+                                        <i class="material-icons float-right">create</i>
+                                    </a>
+                                </form>
+                            </div>                                  
+                        @elseif(Auth::user()->isAdmin === 1)
+                            <div class="float-left col-12 pr-2 pt-2">
+                                <form action="{{ route('comment.destroy', $comment->id) }}" method="POST" class="mr-0 text-danger">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger mr-0 float-right"><i class="material-icons float-right">delete</i></button>
+                                </form>
+                            </div> 
+                        @endif        
+                    @endif   
+
                     <div class="card-body">
                         by {{ $comment->user->name }}  
                         <p style="font-size: 10px">{{ $comment->created_at->diffForHumans() }}</p>

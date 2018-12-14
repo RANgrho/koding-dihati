@@ -17,7 +17,7 @@ class TagController extends Controller
         $tags = Tag::all();
         //return view('tag.test', compact('tags'));
         //return dd($tags);
-        //return view('ate', compact('tags'));
+        return view('tag.index', compact('tags'));
     }
 
     /**
@@ -57,7 +57,8 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        $tags = Tag::FindOrFail($tag->id);
+        return view('tag.show', compact('tags'));
     }
 
     /**
