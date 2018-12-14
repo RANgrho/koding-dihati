@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Tag;
+use App\Comment;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -71,7 +73,7 @@ class PostController extends Controller
             'title' => 'required|max:200',
             'tag' => 'required',
             'context' => 'required',
-            'author' => 'required',            
+            'user_id' => 'required',            
         ));
 
         // =========================================
@@ -84,8 +86,10 @@ class PostController extends Controller
         $posts->title = $request->title;
         $posts->tag = $request->tag;
         $posts->context = $request->context;
-        $posts->author = $request->author;
+        $posts->user_id = $request->user_id;
         
+        //$user->name = User::find($posts->user_id)->posts;
+
         $posts->save();
         
         return redirect('/post')->with('success', 'Post behasil ditambahkan');
@@ -105,6 +109,7 @@ class PostController extends Controller
         // ===================================================
 
         $data = Post::FindOrFail($post->id);
+                
         return view('post.show', compact('data'));
     }
 
@@ -116,7 +121,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('post.edit', compact('post'));
+        $tags = Tag::all();
+        return view('post.edit', compact('post', 'tags'));
     }
 
     /**

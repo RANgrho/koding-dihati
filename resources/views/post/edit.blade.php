@@ -33,10 +33,12 @@
                         <label for="tags">Tag Max 3</label>
                         <br>
                         <select class="custom-select border-0 m-0">
-                            <option selected=""></option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                                <option name="tag" id="tag" value="{{ $post->tag }}">{{ $post->tag }}</option>
+                            @forelse ($tags as $tag)
+                                <option name="tag" id="tag" value="{{ $tag->tag }}">{{ $tag->tag }}</option>
+                            @empty
+                                
+                            @endforelse ($tags as $tag)
                         </select>
                     </div>
 

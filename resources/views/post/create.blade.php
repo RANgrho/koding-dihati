@@ -33,7 +33,7 @@
                 <fieldset>
                     <legend>Buat Post</legend>
                     <div class="form-group">
-                        <input type="hidden" class="form-control" name="author" id="author" value="{{ Auth::user()->name }}">                    
+                        <input type="hidden" class="form-control" name="user_id" id="author" value="{{ Auth::user()->id }}">                    
                     </div>
 
                     <div class="form-group">

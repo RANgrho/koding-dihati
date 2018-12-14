@@ -4,7 +4,7 @@
     @forelse ($posts as $post)
         <div class="card mb-3"> 
             @if (Auth::check())
-                @if (Auth::user()->name === $post->author)
+                @if (Auth::user()->id === $post->user_id)
                     <div class="float-left col-12 pr-2 pt-2">
                         <form action="{{ route('post.destroy', $post->id) }}" method="POST" class="mr-0 text-danger">
                             @csrf
@@ -30,13 +30,14 @@
             
             <a href="/post/{{ $post->id }}" style="" class="text-dark" style="">         
                 <div class="card-body">
-                    <h3 class="card-title">{{ $post->title }}</h3></a>  
-                    <h6 class="card-subtitle text-muted">by : {{ $post->author }}</h6>
-                    <i class="material-icons text-success" style="font-size: 20px;">visibility</i>
+                    <h3 class="card-title">{{ strtoupper($post->title) }}</h3></a>  
+                    <h6 class="card-subtitle text-muted">by : {{ $post->user->name }}</h6>
+                    <i class="material-icons text-success" style="font-size: 15px;">visibility</i>
                     <br>
-                    <i class="material-icons text-primary"  style="font-size: 20px;">comment</i>
-                </div>    
+                    <i class="material-icons text-primary"  style="font-size: 15px;">comment</i>
+                </div>        
                 <div class="card-body">
+                    <hr>
                     <p class="card-text">{{ $post->context }}.</p>
                 </div>     
                    
@@ -50,7 +51,7 @@
                 @elseif($post->tag === 'CSS')
                     <span class="badge badge-pill badge-secondary">{{ $post->tag }}</span>
                 @elseif($post->tag === 'HTML')
-                    <span class="badge badge-pill badge-light">{{ $post->tag }}</span>
+                    <span class="badge badge-pill badge-info">{{ $post->tag }}</span>
                 @elseif($post->tag === 'PHP')
                     <span class="badge badge-pill badge-dark">{{ $post->tag }}</span>
                 @elseif($post->tag === 'Javascript')

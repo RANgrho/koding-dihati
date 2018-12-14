@@ -2,17 +2,16 @@
 
 namespace App;
 
-use App\Post;
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Comment extends Model
 {
     protected $fillable = [
-        'tag',
+        'post_id', 'comment',
     ];
 
     public function post()
     {
-        return $this->hasMany(Post::class);
+        return $this->belongsTo(Post::class);
     }
 }
